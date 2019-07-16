@@ -1,6 +1,12 @@
 tf-env
 test/
 tf-env/
+tf-env2/
+tf-env2
+outputs/
+outputs
+singleKanaStatistic/
+singleKanaStatistic
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

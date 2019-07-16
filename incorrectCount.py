@@ -16,7 +16,7 @@ for class_dir in tqdm(os.listdir(TRAIN_DIR)):
 
     count[class_dir] = 0   
     
-    for img in tqdm(os.listdir(os.path.join(TRAIN_DIR, class_dir))):
+    for img in os.listdir(os.path.join(TRAIN_DIR, class_dir)):
         if img[0] is '.':
             continue
         path = os.path.join(TRAIN_DIR, class_dir, img)

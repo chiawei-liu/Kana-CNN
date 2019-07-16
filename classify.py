@@ -33,6 +33,14 @@ class KanaClassifier:
         proba.sort(key=confidence, reverse=True)
         return proba
 
+    def classify_orig(self, img):
+        img = cv2.resize(img, (IMG_DIMS[0], IMG_DIMS[1]))
+        ret, img = cv2.threshold(img, 50, 255, cv2.THRESH_OTSU)
+        img = img/255
+        img = img_to_array(img)
+        img = np.expand_dims(img, axis=0)
+        return list(self.model.predict(img)[0])
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('-m', '--model', required=True, help='path to trained model')
