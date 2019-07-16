@@ -17,8 +17,8 @@ from mpl_toolkits.mplot3d import Axes3D
 # In[2]:
 
 
-PATH = '../dataset/train/imgs/'
-WRITEPATH = './outputs'
+PATH = 'G:/computer vision/alcon2019/dataset/test/imgs/'
+WRITEPATH = 'C:/Users/AlcanderLiu/Desktop/outputs'
 
 if not os.path.exists(WRITEPATH):
     os.makedirs(WRITEPATH)
@@ -40,7 +40,7 @@ def read_image(imgNum):
 # In[4]:
 
 
-img = read_image(2231)
+# img = read_image(2231)
 
 
 # In[5]:
@@ -393,14 +393,38 @@ def segmentation_10(imgNum, img):
 
 
 def main():
-    img = read_img(imgNum)
-    segmentation_1(imgNum, img)
-    segmentation_2(imgNum, img)
-    segmentation_3(imgNum, img)
-    segmentation_5(imgNum, img)
+    img = cv.imread('G:/computer vision/alcon2019/dataset/test/imgs/14.jpg')
+    print(img)
+    #grayImg = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    print(img)
+    imgNum = 14
+    '''
+    result = segmentation_1(imgNum, img)
+    if result is not None:     
+        for img1 in result:
+            img1 = cv.cvtColor(img1, cv.COLOR_BGR2GRAY)
+            '''
+    result = segmentation_2(imgNum, img)
+    if result is not None:     
+        for img1 in result:
+            img1 = cv.cvtColor(img1, cv.COLOR_BGR2GRAY)
+            '''
+    result = segmentation_3(imgNum, img)
+    if result is not None:     
+        print(result)
+        for img1 in result:
+            img1 = cv.cvtColor(img1, cv.COLOR_BGR2GRAY)
+            '''
+    result = segmentation_5(imgNum, img)
+    if result is not None:     
+        for img1 in result:
+            img1 = cv.cvtColor(img1, cv.COLOR_BGR2GRAY)
 
 segMethods = [segmentation_1, segmentation_2, segmentation_3, None, segmentation_5]
 # In[ ]:
+
+if __name__ == "__main__":
+    main()
 
 
 

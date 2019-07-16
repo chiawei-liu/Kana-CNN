@@ -16,7 +16,7 @@ def main():
     filename = os.path.splitext(os.path.basename(imgPath))[0]
     print(filename)
     kc = KanaClassifier(args['model'], args['labelbin'])
-    classifyThree(img, filename, kc)
+    print(classifyThree(img, filename, kc))
 
 def classifyThree(img, filename, kc):
     segResults = [None for i in range(len(f.segMethods))]
@@ -35,8 +35,11 @@ def classifyThree(img, filename, kc):
         if segResult is not None:     
             result = []
             for img in segResult:
-                img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-                result.append(kc.classify(img)[0])
+                try:
+                    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                    result.append(kc.classify(img)[0])
+                except:
+                    result.append({'unicode':'err', 'confidence':0})
             results.append(result)
     return results
 
